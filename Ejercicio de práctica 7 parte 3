@@ -1,0 +1,96 @@
+#include <stdio.h>
+#include <math.h>
+
+int main()
+{
+    int a, b, opcion;
+    double res;
+
+    do
+    {
+        printf("\nElija la opción que quiera realizar:\n");
+        printf("1. Sumar\n");
+        printf("2. Restar\n");
+        printf("3. Multiplicar\n");
+        printf("4. Dividir\n");
+        printf("5. Sacar raíz\n");
+        printf("6. Elevar a un exponente\n");
+        printf("0. Finalizar\n");
+        printf("Opción: ");
+        scanf("%d", &opcion);
+
+        if (opcion == 0)
+        {
+            printf("Programa finalizado.\n");
+            break;
+        }
+
+        // Si la opción es raíz solo se pide un número
+        if (opcion == 5)
+        {
+            printf("Dame un número: ");
+            scanf("%d", &a);
+        }
+        else
+        {
+            printf("Primer número: ");
+            scanf("%d", &a);
+
+            printf("Segundo número: ");
+            scanf("%d", &b);
+        }
+
+        switch (opcion)
+        {
+        case 1:
+            res = a + b;
+            printf("La suma es igual a: %.2f\n", res);
+            break;
+
+        case 2:
+            res = a - b;
+            printf("La resta es igual a: %.2f\n", res);
+            break;
+
+        case 3:
+            res = a * b;
+            printf("La multiplicación es igual a: %.2f\n", res);
+            break;
+
+        case 4:
+            if (b == 0)
+            {
+                printf("Error: no se puede dividir entre 0.\n");
+            }
+            else
+            {
+                res = (double)a / b;
+                printf("La división es igual a: %.2f\n", res);
+            }
+            break;
+
+        case 5:
+            if (a < 0)
+            {
+                printf("Error: no existe raíz de un número negativo.\n");
+            }
+            else
+            {
+                res = sqrt(a);
+                printf("La raíz es igual a: %.2f\n", res);
+            }
+            break;
+
+        case 6:
+            res = pow(a, b);
+            printf("El resultado es igual a: %.2f\n", res);
+            break;
+
+        default:
+            printf("Opción inválida, presione otra.\n");
+        }
+
+    } while (opcion != 0);
+
+    return 0;
+}
